@@ -1,0 +1,11 @@
+{
+  "name": "parser",
+  "version": "1.0.0",
+  "description": "example project for puppeteer lib",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "Maksim Sidorychev",
+  "license": "ISC"
+}
