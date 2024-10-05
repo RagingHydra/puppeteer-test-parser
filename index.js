@@ -1,5 +1,7 @@
 import puppeteer from "puppeteer";
 import minimist from "minimist";
+import * as fs from 'node:fs/promises';
+import path from 'path';
 
 const log = console.log;
 const argv = minimist(process.argv.slice(2));
@@ -19,7 +21,9 @@ const selectRegion = async (page, region) => {
 }
 
 const saveScreenshot = async page => {
-    throw new Error('Not implemented');
+    const screenshot = await page.screenshot({ type: 'jpeg' });
+    const filePath = path.join(process.cwd(), 'screenshot.jpg');
+    return fs.writeFile(filePath, screenshot);
 }
 
 const saveProduct = async page => {
@@ -49,6 +53,8 @@ const start = async () => {
     log('Region selected');
 
     await saveScreenshot(page);
+    log('Screenshot saved')
+
     await saveProduct(page);
 
     return browser.close();
