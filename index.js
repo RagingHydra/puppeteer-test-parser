@@ -52,6 +52,8 @@ const start = async () => {
     await selectRegion(page, region);
     log('Region selected');
 
+    await new Promise(r => setTimeout(r, 1500));
+
     await saveScreenshot(page);
     log('Screenshot saved')
 
