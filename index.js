@@ -32,6 +32,10 @@ const selectRegion = async (page, region) => {
 }
 
 const saveScreenshot = async page => {
+    await page.evaluate(() => {
+        window.scrollTo(0, 0);
+      });
+
     const screenshot = await page.screenshot({ type: 'jpeg' });
     const filePath = path.join(process.cwd(), 'screenshot.jpg');
     return fs.writeFile(filePath, screenshot);
@@ -102,7 +106,7 @@ const lifecycle = async (page) => {
 
 const start = async () => {
     const browser = await puppeteer.launch({
-         headless: true, 
+         headless: false, 
          defaultViewport: null, 
          args: ['--start-maximized'] 
     });
