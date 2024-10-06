@@ -59,7 +59,7 @@ const saveProduct = async page => {
 
     const product = await page.evaluate((p, ps, dp, dps, n, r) => {
         const parseNumber = e => {
-            const f = parseFloat(e);
+            const f = parseFloat(e.replace(/\s/g,''));
             if (!f || isNaN(f)) return 0;
             return f;
         }
