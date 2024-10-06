@@ -65,7 +65,7 @@ const saveProduct = async page => {
         }
 
         return {
-            name: n.textContent,
+            name: n.textContent.trim(),
             price: parseNumber(p.textContent) + parseNumber(ps.textContent.slice(1)) / 100,
             discountPrice: dp ? parseNumber(dp.textContent) + parseNumber(dps.textContent.slice(1)) / 100 : null,
             reviewCount: parseNumber(r.outerText)
